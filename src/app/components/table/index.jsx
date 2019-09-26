@@ -6,6 +6,7 @@ const StyledTable = styled.table`
   margin-bottom: 1rem;
   color: #212529;
   border-collapse: collapse;
+  text-align: center;
 `;
 
 const StyledTh = styled.th`

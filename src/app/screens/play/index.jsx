@@ -33,6 +33,7 @@ const StyledDiv = styled.div`
 const StyledSelect = styled.select`
   width: 400px;
   height: 40px;
+  font-size: 20px;
 `;
 
 const PlayComponent = ({

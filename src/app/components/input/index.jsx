@@ -18,6 +18,7 @@ const StyledInput = styled.input`
   height: 40px;
   border-radius: 5px;
   border: ${({ error }) => (error ? "1px solid red" : "1px solid grey")};
+  font-size: 20px;
 `;
 
 const Input = ({ width, type, text, name, value, handleChange, error }) => {
