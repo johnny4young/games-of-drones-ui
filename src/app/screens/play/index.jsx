@@ -64,7 +64,7 @@ const PlayComponent = ({
     }
   }, [player1Points, player2Points]);
 
-  const seletOption = ({ target: { value } }) => setOption(value);
+  const selectOption = ({ target: { value } }) => setOption(value);
 
   const saveOption = player => {
     dispatch(savePlayerOption({ player, selectedOption: option }));
@@ -86,19 +86,22 @@ const PlayComponent = ({
         );
       }
     }
+    //reset select
+    setOption(1);
   };
 
   return (
+    
     <StyledContainer>
       <StyledDiv>
         <h1>Round {rounds.length + 1}</h1>
         <h3>{!player1Played ? player1Name : !player2Played && player2Name}</h3>
         <div>
           <label htmlFor="move">Select Move: </label>
-          <StyledSelect name="move" onChange={seletOption}>
-            <option value="1">Rock</option>
-            <option value="2">Paper</option>
-            <option value="3">Scissors</option>
+          <StyledSelect name="move" onChange={selectOption}>
+            <option value="1" selected={ option === "1"}>Rock</option>
+            <option value="2" selected={ option === "2"}>Paper</option>
+            <option value="3" selected={ option === "3"}>Scissors</option>
           </StyledSelect>
         </div>
         <Button
