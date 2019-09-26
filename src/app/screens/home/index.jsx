@@ -7,6 +7,8 @@ import Table from "../../components/table";
 import Loader from "../../components/loader";
 import { StyledTd, StyledTr } from "../../components/table/styles";
 
+import Pagination from 'rc-pagination';
+
 import getWinner from "../../api/getWinners";
 
 const StyledContainer = styled.div`
@@ -27,10 +29,22 @@ const StyledDiv = styled.div`
 
 const HomeComponent = () => {
   const [data, setData] = useState([]);
+  const [pageCount, setPageCount] = useState(1);
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    getWinner(setData);
-  }, []);
+    getWinner(loadWinnerFromServer, 10, Math.ceil((pageCount - 1) * 10));
+  }, [pageCount]);
+
+
+  const handlePageClick = (page) => { 
+    setPageCount(page);
+  };
+
+  const loadWinnerFromServer = (rows, count, limit, offset) => {
+    setData(rows);
+    setTotal(count);
+  }
 
   return (
     <StyledContainer>
@@ -43,6 +57,7 @@ const HomeComponent = () => {
       </StyledDiv>
       <StyledDiv>
         {data.length ? (
+          <>
           <Table headers={["Name", "Victories"]}>
             {data.map((row, index) => (
               <StyledTr key={index}>
@@ -51,6 +66,8 @@ const HomeComponent = () => {
               </StyledTr>
             ))}
           </Table>
+          <Pagination onChange={handlePageClick} current={pageCount} total={total} />
+          </>
         ) : (
           <Loader />
         )}
