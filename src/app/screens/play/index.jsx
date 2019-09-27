@@ -87,7 +87,7 @@ const PlayComponent = ({
       }
     }
     //reset select
-    setOption(1);
+    setOption("1");
   };
 
   return (
