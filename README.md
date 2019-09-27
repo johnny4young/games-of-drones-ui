@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+ A rock, paper, scissors implementation with React and Redux, Jest, Formik, and Yup.   
+
 Live demo [Link](https://games-of-drones-ui.johnny4young.now.sh/)
 
 ## Available Scripts
